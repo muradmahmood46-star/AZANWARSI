@@ -26,17 +26,20 @@ const Work = () => {
   ];
 
   useGSAP(() => {
-    // Ensuring the refs are not null before accessing scrollWidth
-    if (!flexRef.current || !sectionRef.current) return;
+    // TypeScript ko bol rahe hain "ignore karo"
+    const flex = flexRef.current as any;
+    const section = sectionRef.current as any;
 
-    const totalWidth = flexRef.current.scrollWidth;
+    if (!flex || !section) return;
+
+    const totalWidth = flex.scrollWidth;
     const amountToScroll = totalWidth - window.innerWidth;
 
-    gsap.to(flexRef.current, {
+    gsap.to(flex, {
       x: -amountToScroll,
       ease: "none",
       scrollTrigger: {
-        trigger: sectionRef.current,
+        trigger: section,
         pin: true,
         scrub: 1,
         start: "top top",
