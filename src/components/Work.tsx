@@ -7,8 +7,9 @@ import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(ScrollTrigger);
 
 const Work = () => {
-  const sectionRef = useRef(null);
-  const flexRef = useRef(null);
+  // Types defined for references to prevent TypeScript 'never' errors
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const flexRef = useRef<HTMLDivElement>(null);
 
   // Azan's 10 Portfolio Projects
   const projects = [
@@ -25,9 +26,9 @@ const Work = () => {
   ];
 
   useGSAP(() => {
+    // Ensuring the refs are not null before accessing scrollWidth
     if (!flexRef.current || !sectionRef.current) return;
 
-    // Calculate the total width of the scrolling container
     const totalWidth = flexRef.current.scrollWidth;
     const amountToScroll = totalWidth - window.innerWidth;
 
