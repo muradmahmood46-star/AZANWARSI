@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 const Work = () => {
   // Types defined for references to prevent TypeScript 'never' errors
   const sectionRef = useRef<HTMLDivElement>(null);
-  const flexRef = useRef<HTMLDivElement>(null);
+  const flexRef = useRef<HTMLDivElement>(null!);
 
   // Azan's 10 Portfolio Projects
   const projects = [
